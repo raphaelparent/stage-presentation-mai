@@ -1,0 +1,39 @@
+//=====================================================
+//   All animation used with Angualr ng-animate
+//=====================================================
+
+
+// Translate slides, based on which side they enter. --
+.slide.translate {
+  transition: @slider-transition;
+  // Enter right, leave left
+  &.right{
+    &.ng-enter{
+      left: 100%;
+    }
+    &.ng-enter-active{
+      left: 0;
+    }
+    &.ng-leave{
+      left: 0;
+    }
+    &.ng-leave-active {
+      left: -100%;
+    }
+  }
+  // Enter left, leave right
+  &.left{
+    &.ng-enter{
+      left: -100%;
+    }
+    &.ng-enter-active{
+      left: 0;
+    }
+    &.ng-leave{
+      left: 0;
+    }
+    &.ng-leave-active {
+      left: 100%;
+    }
+  }
+}

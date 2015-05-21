@@ -1,0 +1,57 @@
+.prev, .next {
+  position: absolute;
+  z-index: 100000000;
+  top: 50vh;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.prev {
+  left: 0;
+  transition: @menu-transition;
+  &.opened {
+    left: 260px;
+  }
+}
+
+.next {
+  right: 0;
+}
+
+.toggle-menu {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  z-index: 8000;
+  font-size: 3em;
+  cursor: pointer;
+  transition: @menu-transition;
+  &.opened {
+    left: 260px;
+  }
+}
+
+nav.menu {
+  position: absolute;
+  left: -250px;
+  z-index: 900;
+  background-color: @primary-color;
+  transition: @menu-transition;
+  font-size: 1.6em;
+  width: 250px;
+  height: 100vh;
+  h4 {
+    padding: 15px 25px;
+  }
+  &.opened {
+    left: 0;
+  }
+  ul {
+    li {
+      cursor: pointer;
+      width: 100%;
+      padding: 15px 25px;
+      display: block;
+    }
+  }
+}

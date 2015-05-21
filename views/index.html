@@ -1,0 +1,122 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<html ng-app="StageApp">
+<head>
+    <title>Présentation</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <base href="./"/>
+
+    <link rel="stylesheet" href="assets/stylesheet.css">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+</head>
+<body ng-controller="SliderController">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<div>
+    <div class="progression-bar" ng-class="model.menuClass" total="{{model.max}}" progression="{{model.showed}}" progression-bar></div>
+    <div class="toggle-menu" bg-checker target="toggle-menu" ng-click="model.toggleMenu()" ng-class="model.menuClass">
+        <i class="mdi-navigation-menu"></i>
+    </div>
+    <nav class="menu" ng-class="model.menuClass">
+        <h4>{{ model.presentationTitle }}</h4>
+        <ul>
+            <li class="waves-effect waves-light" ng-repeat="slide in model.slides" ng-click="model.change(slide.index)">{{ slide.name }}</li>
+        </ul>
+    </nav>
+    <div class="prev" ng-class="model.menuClass" ng-click="model.prev()"><i class="mdi-navigation-chevron-left medium"></i></div>
+    <div>
+        <div class="slider" ng-switch="" on="model.showed">
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="1">
+                <h1>Stage @nurun</h1>
+                <h3>Du 30 mars au 21 mai</h3>
+                <h3>Raphaël Parent</h3>
+                <img src="assets/images/bureau.jpg" alt="Les bureaux chez nurun montréal."/>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="2">
+                <h1>mtl-dashboard-analytics</h1>
+                <h3>Projet à l’interne.</h3>
+                <p>Dans le cadre de mon stage chez <b>Nurun montréal</b>, j’ai été en mesure de commencer un projet qui sera utile autant pour l’agence que pour les clients. Il s’agit d’un “dashboard” montrant des statistiques recueillies de <b>Google Analytics</b> permettant ainsi aux clients de voir les performances de leur site.</p>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="3">
+                <h1>les étapes de production</h1>
+                <h3>Commencer “from scratch” et monter un beau projet.</h3>
+                <p>Ce projet m’a semblé très intéressant dès le début quoique un peu intimidant puisque je devais construire un <b>côté administrateur</b> sans framework (comme Wordpress), jouer avec des bases de données. et je n’avais rien fait de tout cela dans le passé. Par contre j’adore les défis et j’ai complètement embarqué dans l’idée.</p>
+                <img src="assets/images/from-scratch.jpg" alt="Building a website from scratch"/>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="4">
+                <h1>le côté administrateur</h1>
+                <h3>Voir, créer, mettre à jour et supprimer des clients et des usagers.</h3>
+                <p>J’ai commencé principalement par le côté administrateur puisqu’il présentait les étapes les plus “faciles” et d’autres étapes plus cruciales. Tout d’abord j’ai fait qu’un usager puisse se <b>connecter</b>, tout d’abord avec des informations “hardcoder” , cela m’a permis d’apprendre comment gérer l’authentification d’un usager avant de le faire avec ceux de la base de données. Ensuite j’ai monté la base afin de pouvoir ajouter un usager, <b>MongoDB</b> (le système de base de données utilisé avec node.js) à une manière de fonctionner que j’ai dû m’approprier <b>(les modèles, les documents, les collections etc.)</b>.</p>
+                <p>Savoir comment ajouter un usager m’a aidé à orienter mes recherches pour la suite, c’est-à-dire <b>supprimer et mettre à jour</b> un usager. Les étapes se ressemblent à quelques exceptions près, comme envoyer les données à mettre à jour ou afficher une fenêtre d’avertissement avant de supprimer un usager. Ensuite j’ai transféré ces étapes afin de <b>gérer les clients</b>. Tout au long du projet, plusieurs de ces étapes ce sont raffinées. J’ai changé les informations contenues par les usagers et les clients plusieurs fois, peaufiner le code et le flot de toutes ces étapes.</p>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="5">
+                <h1>le côté client</h1>
+                <h3>Prendre les données de google analytics, y ajouter des commentaires observatoires et les afficher.</h3>
+                <p>Avec le côté administrateur bien entamé, j’avais une bonne base pour m’attaquer au <b>côté client</b>. J’ai commencé par construire un schéma afin de démontrer les relations entre mes différentes collections de la base de données pour mieux comprendre le lien qui les unirait. Une fois cela fait et confirmé avec mon superviseur, il a fallu afficher <b>différents templates selon les widgets</b> du dashboard du client. Lorsqu’il était bien affiché je me suis mis au morceau le plus important, récupéré l’information avec <b>l’API Google Analytics</b> et l’afficher dans le bon template. Tout cela en ajoutant la possibilité <b>d’ajouter, éditer ou supprimer</b> un widget du dashboard et de permettre à un administrateur client de gérer les usagers liés à sa compagnie.</p>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="6">
+                <h1>la recherche</h1>
+                <h3>Plusieurs heures de recherche et d’essai erreur.</h3>
+                <p>Pendant tout ce processus, j’ai accordé au moins <b>le tier de mon temps</b> à faire de la recherche. Pourquoi autant? Parce que j’ai utilisé des technologies que je connaissais très peu et que je désirais faire le tout comme il faut. J’ai donc passé plusieurs heures à lire des <b>articles</b>, regarder des questions sur <b>“stack overflow”</b> et essayer des bouts de codes en espérant que ce soit le bon.</p>
+                <img src="assets/images/research.jpg" alt="Personne frustrée devant son ordinateur"/>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="7">
+                <img src="assets/images/fichiers_scinder.gif" alt="Presque tous mes fichiers"/>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="8">
+                <h1>la “stack” technologique</h1>
+                <h3>Less, grunt, angular.js, node.js et mongodb.</h3>
+                <p>Ce projet m’a permis d’apprendre plusieurs nouvelles technologies tel que node.js, mogodb et angular ainsi que d’en perfectionner que je connaissais déjà comme less et grunt.</p>
+                <img src="assets/images/pancake-stack.jpg" alt="Montagne de pancakes"/>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="9">
+                <h1>html et less</h1>
+                <p>Tout d’abord j’ai eu à faire du html et du less, deux technologies que je connaissais assez bien. Less est un préprocesseur css, cela veut dire qu’il rend le css un peu plus comme un langage de programmation et permet de nouvelles fonctionnalités comme le “nesting”, les “mixins” et surtout des variables.</p>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="10">
+                <h1>grunt</h1>
+                <p>Grunt est un outil permettant de gérer des tâches liées au code, plus précisément, compiler du less, concaténer des fichiers javascript, les minifier et encore plus.</p>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="11">
+                <h1>angular.js</h1>
+                <p>Angular est un puissant framework MVC. L’acronyme MVC tiens pour “model-view-controller”. INFOS SUR LES MVC. Angular permet entre autres du “two way binding”, cela permet de modifier de l’informations sur une vue (un fichier html par exemple).</p>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="12">
+                <h1>node.js</h1>
+                <p>Node.js est un environnement de développement javascript pour des applications serveurs. Grosso modo, c’est l’équivalent de PHP mais en javascript. Node.js est vraiment bien puisqu’il fonctionne avec MongoDB. MongoDB est un système de base de données qu’il retourne des JSON et qu’ils sont très faciles à utiliser en javascript.</p>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="13">
+                <h1>les différences</h1>
+                <h3>École vs milieu de stage.</h3>
+                <p>La plus grande différence que j’ai remarqué entre mon stage et les différents projets que j’ai faits à l’école c’est le temps que j’ai accordé à la recherche. À l’école, le temps que l’on peut mettre sur un seul projet est très restreint dû aux plusieurs autres projets sur lesquels nous devons travailler. Donc l’important c’est que tout fonctionne et non que tout soit bien fait comme si on devait déléguer le projet à quelqu’un d’autre et que ça ne lui prenne pas 3-4 jours afin de comprendre le code.</p>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="14">
+                <h1>les compétences</h1>
+                <h3>École vs milieu de stage.</h3>
+                <p>Pendant mon stage, j’ai utilisé beaucoup javascript, qui est le langage de programmation principale que l’on a appris à l’école. Par contre, j’ai utilisé des frameworks que je n’avais pas vus à l’école mais que j’avais un peu touchés à l’extérieur. Sinon j’ai utilisé un mac pour travailler, OS que j’ai appris à utilisé à l’école. Comme logiciel j’ai utilisé les IDE PHPStorm et WebStorm qui sont très semblables et que j’aurais dû apprendre à l’école puisque les IDE permettent beaucoup plus que les simples éditeurs de texte comme SublimeText.</p>
+            </div>
+            <div class="slide translate" ng-class="model.direction" ng-switch-when="15">
+                <h1>les points marquant</h1>
+                <h3>École vs milieu de stage.</h3>
+                <p>Les points positifs de mon stage sont les suivants, j’ai pu être complètement autonome, j’ai appris énormément et cela a confirmé que c’est vraiment ce que je voulais faire comme carrière professionnelle. J’ai réfléchi un bon moment afin de trouver des points négatifs et je ne suis pas arrivé à déterminer un point qui est négatif, j’ai été vraiment chanceux de tomber sur ce stage. Mes plus grandes surprises ont été l’autonomie et les responsabilités qu’ils m’ont données. J’ai commencé un projet à partir de rien et tout seul. Je trouve que cela est beaucoup pour un stagiaire et j’ai essayé de relever le défi du mieux que je le pouvais.</p>
+            </div>
+        </div>
+    </div>
+    <div class="next" ng-click="model.next()"><i class="mdi-navigation-chevron-right medium"></i></div>
+</div>
+<script src="assets/javascripts/combo.js"></script>
+<script src="assets/javascripts/app.js"></script>
+</body>
+</html>
