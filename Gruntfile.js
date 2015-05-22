@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     var globalConfig = {
         src        :'source',
         dest       :'public/assets',
-        angular    :'public/app/modules/stage'
+        angular    :'source/app/modules/stage'
     };
 
 

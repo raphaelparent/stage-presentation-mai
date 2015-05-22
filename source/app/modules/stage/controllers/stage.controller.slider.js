@@ -12,7 +12,7 @@
             $scope.model           = {};
             $scope.model.showed    = 1;
             $scope.model.min       = 1;
-            $scope.model.max       = 14;
+            $scope.model.max       = 16;
             $scope.model.direction = 'right';
             $scope.model.menuClass = 'closed';
 
@@ -27,7 +27,8 @@
                 { name: 'la stack technologique',    index: 8},
                 { name: 'les différences',           index: 13},
                 { name: 'les compétences',           index: 14},
-                { name: 'les points marquants',      index: 15}
+                { name: 'les points marquants',      index: 15},
+                { name: 'la partie intéressante',    index: 16}
             ];
 
             // Go to next slide.

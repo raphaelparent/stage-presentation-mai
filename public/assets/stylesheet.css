@@ -7951,6 +7951,9 @@ body b {
 .slider .slide img {
   margin-top: 15px;
 }
+.slider .slide img.large {
+  max-width: 300px;
+}
 .slider .slide p:last-child {
   padding-bottom: 100px;
 }
